@@ -10,7 +10,7 @@ function createTag(newTagName) {
 // On récupère les données de l'API, puis ajoute les éléments html correspondants (nom, prix, image, description, couleurs)
 
 function fillProductPages() {
-  fetch("http://localhost:3000/api/products")
+  fetch(`http://localhost:3000/api/products/`)
     .then((response) => {
       return response.json();
     })
@@ -55,9 +55,10 @@ let productInCart;
 // Ajout du produit dans le panier + alertes
 
 const addToCart = () => {
-  if (selectedColor.value == "" || selectedQuantity.value == 0) {
-    alert("Veuillez choisir la couleur ainsi que la quantitée");
-  } else {
+  if (selectedColor.value == "" || selectedQuantity.value == 0 || selectedQuantity.value < 1 || selectedQuantity.value > 100) {
+      alert("Veuillez choisir la couleur ainsi que la quantité de l'article (entre 1 et 100)");
+    }
+    else {
     alert("Le produit a été ajouté à votre panier");
     let newProductInCart = {
       color: selectedColor.value,

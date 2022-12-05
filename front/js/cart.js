@@ -120,6 +120,8 @@ const createInnerContent = function () {
   </article>`;
 };
 
+
+
 let cartItemImage;
 let cartItemImageAlt;
 let productName;
